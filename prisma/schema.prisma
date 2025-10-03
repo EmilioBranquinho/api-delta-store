@@ -1,0 +1,35 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Role {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  users User[]
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String
+  roleId   Int 
+  role     Role    @relation(fields: [roleId], references: [id])
+  password String
+}
+
+
+model products {
+  idProduct Int @id @default(autoincrement())
+  name String
+  price Float
+  description String
+  cover String
+}
