@@ -6,7 +6,7 @@ const Authorizeroles = (...allowedRoles) =>{
       if(allowedRoles.includes(userRole)){
         next();
       } else {
-            return res.status(403).json({message: "Acesso negado, permissao insuficiente"})
+            return res.status(403).json({message: "Acesso negado, permissao insuficiente!"})
       }
       
     }
